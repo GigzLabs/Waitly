@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   applicationName: "Waitly",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Waitly" },
+  icons: { apple: "/apple-touch-icon.png" },
 };
 
 export const viewport: Viewport = {
