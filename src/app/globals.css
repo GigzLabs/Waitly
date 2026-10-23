@@ -1,0 +1,303 @@
+@import "tailwindcss";
+
+/* Waitly design tokens. Light is the canonical brand theme; the floor app defaults to dark. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  color-scheme: light;
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4e9f1;
+  --border: #e1e6ee;
+  --border-strong: #c9d2df;
+  --ink: #0e1726;
+  --ink-2: #4b5869;
+  --ink-3: #6e7b8e;
+  --brand: #2457e6;
+  --brand-hover: #1e4bcc;
+  --on-brand: #ffffff;
+  --brand-soft: #e6edff;
+  --free: #15803d;
+  --free-soft: #ddf5e6;
+  --seated: #e11d48;
+  --seated-soft: #fde4ea;
+  --cleaning: #b45309;
+  --cleaning-soft: #fdefd8;
+  --next: #2457e6;
+  --next-soft: #e6edff;
+  --held: #6d28d9;
+  --held-soft: #ede6fd;
+  --focus: #2457e6;
+  --shadow-sm: 0 1px 2px rgba(14, 23, 38, 0.06);
+  --shadow-md: 0 6px 20px rgba(14, 23, 38, 0.08);
+  --shadow-lg: 0 20px 50px rgba(14, 23, 38, 0.14);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --surface: #121b2b;
+  --surface-2: #1a2537;
+  --surface-3: #223049;
+  --border: #263247;
+  --border-strong: #34425c;
+  --ink: #f2f5fa;
+  --ink-2: #b6c0d0;
+  --ink-3: #8593a8;
+  --brand: #6b9bff;
+  --brand-hover: #85adff;
+  --on-brand: #0b1220;
+  --brand-soft: #6b9bff24;
+  --free: #2be08a;
+  --free-soft: #2be08a1f;
+  --seated: #ff4d6d;
+  --seated-soft: #ff4d6d24;
+  --cleaning: #f5a623;
+  --cleaning-soft: #f5a6231f;
+  --next: #6b9bff;
+  --next-soft: #6b9bff24;
+  --held: #b794ff;
+  --held-soft: #b794ff24;
+  --focus: #6b9bff;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-on-brand: var(--on-brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-free: var(--free);
+  --color-free-soft: var(--free-soft);
+  --color-seated: var(--seated);
+  --color-seated-soft: var(--seated-soft);
+  --color-cleaning: var(--cleaning);
+  --color-cleaning-soft: var(--cleaning-soft);
+  --color-next: var(--next);
+  --color-next-soft: var(--next-soft);
+  --color-held: var(--held);
+  --color-held-soft: var(--held-soft);
+  --color-focus: var(--focus);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    border: 1px solid transparent;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      color 150ms ease,
+      transform 100ms ease;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-primary {
+    background: var(--brand);
+    color: var(--on-brand);
+  }
+  .btn-primary:hover {
+    background: var(--brand-hover);
+  }
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--ink);
+    border-color: var(--border-strong);
+  }
+  .btn-secondary:hover {
+    background: var(--surface-2);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink-2);
+  }
+  .btn-ghost:hover {
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+  .btn-danger {
+    background: var(--seated-soft);
+    color: var(--seated);
+  }
+  .btn-sm {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: var(--radius-sm);
+  }
+  .btn-lg {
+    height: 48px;
+    padding: 0 22px;
+    font-size: 15px;
+  }
+  .input {
+    height: 40px;
+    width: 100%;
+    padding: 0 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 14px;
+  }
+  .input::placeholder {
+    color: var(--ink-3);
+  }
+  .input:focus {
+    outline: 2px solid var(--focus);
+    outline-offset: 0;
+    border-color: transparent;
+  }
+  .timer {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+  }
+  .ring-pulse {
+    animation: ring-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes ring-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 220ms ease-out both;
+}

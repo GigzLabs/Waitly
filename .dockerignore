@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+data
+.vitest-data
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+*.log
+.env*
