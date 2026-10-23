@@ -1,0 +1,14 @@
+services:
+  waitly:
+    build: .
+    image: waitly:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - WAITLY_DATA_DIR=/app/data
+    volumes:
+      - waitly-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  waitly-data:
